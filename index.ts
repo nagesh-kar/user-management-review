@@ -1,11 +1,13 @@
-import { NextFunction, Request, Response } from "express";
+import express from "express";
+import { authenticate } from "./auth";
 
-export const authenticate = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void => {
-  // Assume this securely authenticates a request.
-  console.log("Request authenticated");
-  next();
-};
+const app = express();
+const port = 3000;
+
+app.get("/users", authenticate, (req, res) => {
+  res.json(["user1", "user2", "user3", "user4", "user5"]);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}...`);
+});
