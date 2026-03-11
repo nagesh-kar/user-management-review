@@ -1,0 +1,23 @@
+{
+  "name": "user-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "User management system with React frontend and Node.js backend",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@user-management/shared && npm run build --workspace=@user-management/backend && npm run build --workspace=@user-management/frontend",
+    "build:shared": "npm run build --workspace=@user-management/shared",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "dev:backend": "npm run dev --workspace=@user-management/backend",
+    "dev:frontend": "npm run dev --workspace=@user-management/frontend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
